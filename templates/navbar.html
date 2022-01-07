@@ -1,0 +1,24 @@
+<nav>
+    <ul>
+        <li class="logo">SocialCity</li>
+        <li class="btn"><span class="fas fa-bars"></span></li>
+        <div class="items">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Profile</a></li>
+            <li><a href="/">Settings</a></li>
+            <li><a href="/">Logout</a></li>
+        </div>
+        <li class="search-icon">
+            <input type="search" placeholder="Search">
+            <label class="icon">
+                <span class="fas fa-search"></span>
+            </label>
+        </li>
+    </ul>
+</nav>
+<script>
+    $('nav ul li.btn span').click(function(){
+    $('nav ul div.items').toggleClass("show");
+    $('nav ul li.btn span').toggleClass("show");
+    });
+</script>
