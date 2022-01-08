@@ -1,5 +1,25 @@
 {%extends 'base.html'%}
 
+{%block navbar%}
+{%include "navbar.html" %}
+{%endblock%}
+
 {%block content%}
-<h1>Hello World</h1>
+<div class="leftpane">a</div>
+<div class="middlepane">
+    <div class="new_post">
+        <form action="." method="POST" enctype="multipart/form-data">{%csrf_token%}
+            {{form.as_p}}
+            <input type="submit" value="+"/>
+        </form>
+    </div>
+    {%for instance in queryset%}
+    <div class="post_list">
+        <p>{{instance.user.first_name}} {{instance.user.last_name}}</p>
+        <p>{{instance.date}}</p>
+        <p>{{instance.content}}</p>
+    </div>
+    {%endfor%}
+</div>
+<div class="rightpane"> a</div>
 {%endblock%}
