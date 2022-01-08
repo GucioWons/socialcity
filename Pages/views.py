@@ -1,8 +1,9 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from Accounts.models import Account
 from Pages.forms import SignUpForm
 from Posts.forms import PostForm
 from Posts.models import Post
@@ -36,8 +37,9 @@ def register_page(request):
     form = SignUpForm(request.POST or None)
     if form.is_valid():
         user = form.save()
+        Account.objects.create(user=user)
         login(request, user)
-        return redirect("home-page")
+        return redirect("pages:home-view")
     context = {
         "form": form
     }
@@ -55,10 +57,16 @@ def login_page(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')
+                return redirect('pages:home-view')
             else:
                 print()
         else:
             print()
     form = AuthenticationForm()
     return render(request, "login_view.html", context={"form": form})
+
+def logout_view(request):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    logout(request)
+    return redirect("pages:landing-view")

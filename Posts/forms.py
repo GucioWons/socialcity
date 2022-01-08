@@ -4,7 +4,7 @@ from Posts.models import Post
 
 
 class PostForm(forms.ModelForm):
-    photo = forms.ImageField(required=False)
+    photo = forms.ImageField(label='',required=False)
     content = forms.CharField(label='',
     error_messages={
         'required': 'Pole jest wymagane!'

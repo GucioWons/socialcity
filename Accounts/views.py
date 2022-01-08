@@ -9,8 +9,8 @@ from Posts.models import Post
 def profile_page(request, my_id):
     if not request.user.is_authenticated:
         return redirect('/landing')
-    user = get_object_or_404(User, id=my_id)
-    account = get_object_or_404(Account, user=user)
+    account = get_object_or_404(Account, id=my_id)
+    user = account.user
     queryset = Post.objects.filter(user=user)
     context = {
         "object_list": queryset,

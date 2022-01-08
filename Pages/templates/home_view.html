@@ -15,9 +15,14 @@
     </div>
     {%for instance in queryset%}
     <div class="post_list">
-        <p>{{instance.user.first_name}} {{instance.user.last_name}}</p>
+        <p><a href="{{instance.user.account.get_absolute_url}}">{{instance.user.first_name}} {{instance.user.last_name}}</a></p>
         <p>{{instance.date}}</p>
         <p>{{instance.content}}</p>
+        {%if instance.photo%}
+        <div class="post_image">
+            <img class="post_photo"src="{{instance.photo.url}}"/>
+        </div>
+        {%endif%}
     </div>
     {%endfor%}
 </div>
