@@ -14,3 +14,7 @@ class Account(models.Model):
 
     def get_absolute_url(self):
         return reverse('accounts:profile-view', kwargs={'my_id': self.id})
+    def get_add_to_friends_url(self):
+        return reverse('accounts:add-to-friends', kwargs={'my_id': self.id})
+    def get_remove_from_friends_url(self):
+        return reverse('accounts:remove-from-friends', kwargs={'my_id': self.id})

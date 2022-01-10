@@ -99,7 +99,11 @@ body {
     margin-top:20px;
     word-wrap: break-word;
 }
+.post_image{
+    width: 100%;
+}
 .post_photo{
+    max-width: 100%;
     object-fit: cover;
 }
 ul.errorlist{

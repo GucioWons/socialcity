@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+
+{%block navbar%}
+{%include "navbar.html" %}
+{%endblock%}
+
+{%block content%}
+<h1>{{request.user}}</h1>
+{%for instance in queryset%}
+<p>{{instance.first_name}} {{instance.last_name}}</p>
+<p>{{instance.account.school}}</p>
+<p>{{instance.account.town}}</p>
+{%if instance in request.user.account.friends.all%}
+<a href="{{instance.account.get_remove_from_friends_url}}"><i class="fas fa-user-minus"></i></a>
+{%else%}
+<a href="{{instance.account.get_add_to_friends_url}}"><i class="fas fa-user-plus"></i></a>
+{%endif%}
+{%endfor%}
+{%endblock%}

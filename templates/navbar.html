@@ -9,10 +9,12 @@
             <li><a href="/logout">Wyloguj</a></li>
         </div>
         <li class="search-icon">
-            <input type="search" placeholder="Search">
-            <label class="icon">
-                <span class="fas fa-search"></span>
-            </label>
+            <form method="GET", action="{% url 'pages:search_page'%}">
+                <input type="search" placeholder="Search", name="query", value="{{request.GET.query}}">
+                <button class="icon", type="submit">
+                    <span class="fas fa-search"></span>
+                </button>
+            </form>
         </li>
     </ul>
 </nav>
