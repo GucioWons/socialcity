@@ -17,8 +17,8 @@
         {{instance.user.first_name}} {{instance.user.last_name}}</br>
         {{instance.date}}</br>
         {{instance.content}}</br>
-        {{instance.likes.count}} <i class="fas fa-hand-spock"></i>
-        {{instance.dislikes.count}} <i class="fas fa-heart-broken"></i>
+        {{instance.likes.count}} <a href="{{instance.get_like_url}}"><i class="fas fa-hand-spock"></i></a>
+        {{instance.dislikes.count}} <a href="{{instance.get_dislike_url}}"><i class="fas fa-heart-broken"></i></a>
     </div>
 {%endfor%}
 {%endblock%}

@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+
+{%block navbar%}
+{%include "navbar.html" %}
+{%endblock%}
+
+{%block content%}
+{%for instance in queryset%}
+    {%if instance.new%}
+    <p>Nowe!</p>
+    {%endif%}
+    <p>{{instance.date}}</p>
+    {%if instance.request%}
+        {{instance.request.user.first_name}} {{instance.request.user.last_name}} chce dodać Cię do znajomych
+        <a href="{{instance.get_accept_url}}">Zaakceptuj</a>
+        <a href="{{instance.get_decline_url}}">Odmów</a>
+    {%elif instance.action%}
+        {%if instance.action.type == 'LIKE'%}
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} lubi twój wpis
+        {%elif instance.action.type == 'DISLIKE'%}
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} nie lubi twojego wpisu
+        {%elif instance.action.type == 'COMMENT'%}
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} skomentował twój wpis
+        {%endif%}
+    {%endif%}
+{%endfor%}
+{%endblock%}

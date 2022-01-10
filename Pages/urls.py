@@ -1,6 +1,6 @@
 from django.urls import path
 
-from Pages.views import home_page, register_page, login_page, landing_page, logout_view, search_page
+from Pages.views import home_page, register_page, login_page, landing_page, logout_view, search_page, notification_page
 
 app_name = "pages"
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
         path('landing/', landing_page, name='landing-view'),
         path('logout/', logout_view, name='logout-view'),
         path('search/', search_page, name='search_page'),
+        path('notifications/', notification_page, name='notification_page'),
     ]

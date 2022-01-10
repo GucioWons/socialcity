@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 
 # Create your views here.
-from Accounts.models import Account
+from Accounts.models import Account, Notification
 from Pages.forms import SignUpForm
 from Posts.forms import PostForm
 from Posts.models import Post
@@ -26,6 +26,16 @@ def home_page(request):
     }
     return render(request, "home_view.html", context)
 
+
+def notification_page(request):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    queryset = Notification.objects.filter(user=request.user).order_by('-date')
+    context = {
+        "queryset": queryset
+    }
+    #Notification.objects.filter(user=request.user).update(new=False)
+    return render(request, "notification_view.html", context)
 
 def landing_page(request):
     if request.user.is_authenticated:

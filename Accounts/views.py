@@ -1,9 +1,13 @@
+import datetime
+
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
-from Accounts.models import Account
+from django.utils import timezone
+
+from Accounts.models import Account, Notification, Request, Action
 from Posts.models import Post
 
 
@@ -20,15 +24,15 @@ def profile_page(request, my_id):
     }
     return render(request, "profile_view.html", context)
 
+
+# Dodawanie do znajomych
 def add_to_friends(request, my_id):
     if not request.user.is_authenticated:
         return redirect('/landing')
     user = get_object_or_404(User, id=my_id)
-    friends_list = request.user.account.friends
-    print(user)
-    if not friends_list.all().contains(user):
-        friends_list.add(user)
-        user.account.friends.add(request.user)
+    if not user.account.friends.all().contains(user):
+        notification = Notification.objects.create(user=user)
+        Request.objects.create(user=request.user, notification=notification)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
@@ -40,4 +44,73 @@ def remove_from_friends(request, my_id):
     if friends_list.all().contains(user):
         friends_list.remove(user)
         user.account.friends.remove(request.user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def accept_request(request, my_id):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    notification = get_object_or_404(Notification, id=my_id)
+    if notification.request:
+        request.user.account.friends.add(notification.request.user)
+        notification.request.user.account.friends.add(request.user)
+        notification.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def decline_request(request, my_id):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    notification = get_object_or_404(Notification, id=my_id)
+    if notification.request:
+        notification.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+#Like i Dislike
+def like_view(request, my_id):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    post = get_object_or_404(Post, id=my_id)
+    if not post.likes.all().contains(request.user):
+        if post.dislikes.all().contains(request.user):
+            post.dislikes.remove(request.user)
+        post.likes.add(request.user)
+        try:
+            action = Action.objects.get(post=post, type='LIKE')
+        except Action.DoesNotExist:
+            action = None
+        if not action:
+            notification = Notification.objects.create(user=request.user)
+            Action.objects.create(user=request.user, post=post, notification=notification, type='LIKE')
+        else:
+            action.user = request.user
+            action.save()
+            action.notification.save()
+    else:
+        post.likes.remove(request.user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def dislike_view(request, my_id):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    post = get_object_or_404(Post, id=my_id)
+    if not post.dislikes.all().contains(request.user):
+        if post.likes.all().contains(request.user):
+            post.likes.remove(request.user)
+        post.dislikes.add(request.user)
+        try:
+            action = Action.objects.get(post=post, type='DISLIKE')
+        except Action.DoesNotExist:
+            action = None
+        if not action:
+            notification = Notification.objects.create(user=request.user)
+            Action.objects.create(user=request.user, post=post, notification=notification, type='DISLIKE')
+        else:
+            action.user = request.user
+            action.save()
+            action.notification.save()
+    else:
+        post.dislikes.remove(request.user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
