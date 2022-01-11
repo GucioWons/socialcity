@@ -10,7 +10,7 @@
     <div class="new_post">
         <form action="." method="POST" enctype="multipart/form-data">{%csrf_token%}
             {{form.as_p}}
-            <input type="submit" value="+"/>
+            <input type="submit" name="add_post" value="+"/>
         </form>
     </div>
     {%for instance in queryset%}

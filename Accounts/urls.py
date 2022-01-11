@@ -1,7 +1,7 @@
 from django.urls import path
 
 from Accounts.views import profile_page, add_to_friends, remove_from_friends, like_view, dislike_view, accept_request, \
-        decline_request
+        decline_request, post_view
 
 app_name = "accounts"
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
         path('dislike/<int:my_id>/', dislike_view, name='dislike-view'),
         path('accept/<int:my_id>/', accept_request, name='accept-view'),
         path('decline/<int:my_id>/', decline_request, name='decline-view'),
+        path('post/<int:my_id>/', post_view, name='post-view'),
     ]

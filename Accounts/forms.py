@@ -1,6 +1,6 @@
 from django import forms
 
-from Posts.models import Post
+from Accounts.models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
@@ -17,3 +17,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('content', 'photo')
+
+class CommentForm(forms.ModelForm):
+    content = forms.CharField()
+
+    class Meta:
+        model = Comment
+        fields = ('content',)

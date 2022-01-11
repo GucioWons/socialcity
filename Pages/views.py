@@ -5,10 +5,9 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 
 # Create your views here.
-from Accounts.models import Account, Notification
+from Accounts.models import Account, Notification, Post
 from Pages.forms import SignUpForm
-from Posts.forms import PostForm
-from Posts.models import Post
+from Accounts.forms import PostForm
 
 
 def home_page(request):

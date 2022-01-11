@@ -7,8 +7,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 from django.utils import timezone
 
-from Accounts.models import Account, Notification, Request, Action
-from Posts.models import Post
+from Accounts.models import Account, Notification, Request, Action, Comment, Post
+from Accounts.forms import CommentForm
 
 
 def profile_page(request, my_id):
@@ -114,3 +114,33 @@ def dislike_view(request, my_id):
     else:
         post.dislikes.remove(request.user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def post_view(request, my_id):
+    if not request.user.is_authenticated:
+        return redirect('/landing')
+    post = get_object_or_404(Post, id=my_id)
+    comments = Comment.objects.filter(post=post)
+    form = CommentForm(request.POST or None, request.FILES)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.user = request.user
+        new_comment.post = post
+        new_comment.save()
+        try:
+            action = Action.objects.get(post=post, type='COMMENT')
+        except Action.DoesNotExist:
+            action = None
+        if not action:
+            notification = Notification.objects.create(user=request.user)
+            Action.objects.create(user=request.user, post=post, notification=notification, type='COMMENT')
+        else:
+            action.user = request.user
+            action.save()
+            action.notification.save()
+    context = {
+        "form": form,
+        "object": post,
+        "queryset": comments
+    }
+    return render(request, "post_view.html", context)
