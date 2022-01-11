@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block navbar%}
+{%include "navbar.html" %}
+{%endblock%}
+
+{%block content%}
+{{object.content}}
+{%for instance in queryset%}
+    {{instance.user.first_name}} {{instance.user.last_name}}</br>
+    {{instance.content}}
+{%endfor%}
+<form action="." method="POST">{%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="+"/>
+</form>
+{%endblock%}
