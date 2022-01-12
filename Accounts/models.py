@@ -13,6 +13,9 @@ class Account(models.Model):
     image = models.ImageField(default='default.png')
     friends = models.ManyToManyField(User, related_name='user_friends', blank=True)
 
+    def __str__(self):
+        return self.user.username
+
     def get_absolute_url(self):
         return reverse('accounts:profile-view', kwargs={'my_id': self.id})
 
