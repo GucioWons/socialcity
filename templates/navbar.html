@@ -4,8 +4,8 @@
         <li class="btn"><span class="fas fa-bars"></span></li>
         <div class="items">
             <li><a href="/">Strona główna</a></li>
-            <li><a href="/">Profil</a></li>
-            <li><a href="/">Ustawienia</a></li>
+            <li><a href="{{request.user.account.get_absolute_url}}">Profil</a></li>
+            <li><a href="/settings">Ustawienia</a></li>
             <li><a href="/notifications"><i class="fas fa-concierge-bell"></i></a></li>
             <li><a href="/logout">Wyloguj</a></li>
         </div>

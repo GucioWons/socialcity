@@ -7,24 +7,60 @@
 {%block content%}
 <div class="leftpane">a</div>
 <div class="middlepane">
-    <div class="new_post">
-        <form action="." method="POST" enctype="multipart/form-data">{%csrf_token%}
-            {{form.as_p}}
-            <input type="submit" name="add_post" value="+"/>
-        </form>
-    </div>
-    {%for instance in queryset%}
-    <div class="post_list">
-        <p><a href="{{instance.user.account.get_absolute_url}}">{{instance.user.first_name}} {{instance.user.last_name}}</a></p>
-        <p>{{instance.date}}</p>
-        <p>{{instance.content}}</p>
-        {%if instance.photo%}
-        <div class="post_image">
-            <img class="post_photo"src="{{instance.photo.url}}"/>
+    <div class="middlepane_inside">
+        <div class="new_post">
+            <form action="." method="POST" enctype="multipart/form-data">{%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" name="add_post" value="+"/>
+            </form>
         </div>
-        {%endif%}
+        <div class="post_list">
+            {%for instance in queryset%}
+            {%if request.user in instance.user.account.friends or instance.user == request.user%}
+            <div class="home_post">
+                <div class="home_post_details">
+                    <img src="{{instance.user.account.image.url}}"/>
+                    <a href="{{instance.user.account.get_absolute_url}}">{{instance.user.first_name}} {{instance.user.last_name}}</a></br>
+                    {{instance.date}}
+
+                </div>
+                {%if instance.user == request.user%}
+                    <div class="delete">
+                        <a href="{{instance.get_delete_url}}"><i class="far fa-times-circle"></i></a>
+                    </div>
+                {%endif%}
+                <div class="home_post_content">
+                    </br>{{instance.content}}
+                </div>
+                {%if instance.photo%}
+                    <div class="home_post_image">
+                        <img class="post_photo"src="{{instance.photo.url}}"/>
+                    </div>
+                {%endif%}
+                <div class="action">
+                    {{instance.likes.count}} <a href="{{instance.get_like_url}}"><i class="fas fa-hand-spock"></i></a>
+                </div>
+                <div class="action">
+                    {{instance.dislikes.count}} <a href="{{instance.get_dislike_url}}"><i class="fas fa-heart-broken"></i></a>
+                </div>
+                <div class="action"><a href="{{instance.get_absolute_url}}"><i class="fas fa-comments"></i></a></div>
+            </div>
+            {%endif%}
+            {%endfor%}
+        </div>
     </div>
-    {%endfor%}
 </div>
-<div class="rightpane"> a</div>
+<div class="rightpane">
+    <div class="rightpane_inside">
+        Friends:
+        {%for instance in friends%}
+            <div class="friend">
+                <a href="{{instance.account.get_absolute_url}}">
+                    <img src="{{instance.account.image.url}}"/>
+                    {{instance.first_name}} {{instance.last_name}}
+                </a>
+            </div>
+        {%endfor%}
+    </div>
+</div>
 {%endblock%}

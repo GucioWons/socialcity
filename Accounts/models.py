@@ -10,7 +10,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
     school = models.CharField(max_length=500, blank=True)
     town = models.CharField(max_length=80, blank=True)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(default='default.png')
     friends = models.ManyToManyField(User, related_name='user_friends', blank=True)
 
     def get_absolute_url(self):
@@ -38,6 +38,12 @@ class Post(models.Model):
 
     def get_dislike_url(self):
         return reverse('accounts:dislike-view', kwargs={'my_id': self.id})
+
+    def get_delete_url(self):
+        return reverse('accounts:delete-view', kwargs={'my_id': self.id})
+
+    def get_absolute_url(self):
+        return reverse('accounts:post-view', kwargs={'my_id': self.id})
 
 
 class Notification(models.Model):
