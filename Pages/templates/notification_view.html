@@ -6,22 +6,30 @@
 
 {%block content%}
 {%for instance in queryset%}
+<style>
+    .content
+    {
+     text-align:left;
+    }
+</style>
+<div class = "noti">
     {%if instance.new%}
     <p>Nowe!</p>
     {%endif%}
     <p>{{instance.date}}</p>
     {%if instance.request%}
         {{instance.request.user.first_name}} {{instance.request.user.last_name}} chce dodać Cię do znajomych
-        <a href="{{instance.get_accept_url}}">Zaakceptuj</a>
-        <a href="{{instance.get_decline_url}}">Odmów</a>
+        <a href="{{instance.get_accept_url}}">Zaakceptuj <i class="fas fa-check" style="color:green"></i></a>
+        <a href="{{instance.get_decline_url}}">Odmów <i class="fas fa-times"style="color:red"></i></a>
     {%elif instance.action%}
         {%if instance.action.type == 'LIKE'%}
-            {{instance.action.user.first_name}} {{instance.action.user.last_name}} lubi twój wpis
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} lubi twój wpis <i class="fas fa-thumbs-up"style="color:blue"></i>
         {%elif instance.action.type == 'DISLIKE'%}
-            {{instance.action.user.first_name}} {{instance.action.user.last_name}} nie lubi twojego wpisu
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} nie lubi twojego wpisu <i class="fas fa-angry"style="color:red"></i>
         {%elif instance.action.type == 'COMMENT'%}
-            {{instance.action.user.first_name}} {{instance.action.user.last_name}} skomentował twój wpis
+            {{instance.action.user.first_name}} {{instance.action.user.last_name}} skomentował twój wpis<i class="fas fa-comments"style="color:orange"></i>
         {%endif%}
     {%endif%}
 {%endfor%}
+</div>
 {%endblock%}

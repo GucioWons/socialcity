@@ -1567,3 +1567,29 @@
 [2022-01-13 02:30:33]: testuser usun¹³ ze znajomych u¿ytkownika testuser2
 [2022-01-13 02:30:33]: testuser doda³ post o tresci: (testcontent) i id = 1
 [2022-01-13 02:30:34]: testuserzalogowa³ siê do serwisu
+[2022-01-13 02:32:23]: testuser zaakceptowa³ proœbê u¿ytkownika testuser2
+[2022-01-13 02:32:23]: testuser wys³a³ zaproszenie do znajomych u¿ytkownikowi testuser2
+[2022-01-13 02:32:23]: testuser odrzuci³ proœbê u¿ytkownika testuser2
+[2022-01-13 02:32:23]: testuser usun¹³ post o treœci (testcontent) i id = 1
+[2022-01-13 02:32:23]: testuser nie lubi posta o id = 1
+[2022-01-13 02:32:23]: testuser nie lubi posta o id = 1
+[2022-01-13 02:32:23]: testuser lubi post o id = 1
+[2022-01-13 02:32:23]: testuser lubi post o id = 1
+[2022-01-13 02:32:23]: testuser skomentowa³ post o id = 1 (testcontent)
+[2022-01-13 02:32:23]: testuser skomentowa³ post o id = 1 (testcontent)
+[2022-01-13 02:32:23]: testuser usun¹³ ze znajomych u¿ytkownika testuser2
+[2022-01-13 02:32:24]: testuser doda³ post o tresci: (testcontent) i id = 1
+[2022-01-13 02:32:24]: testuserzalogowa³ siê do serwisu
+[2022-01-13 02:33:08]: testuser zaakceptowa³ proœbê u¿ytkownika testuser2
+[2022-01-13 02:33:08]: testuser wys³a³ zaproszenie do znajomych u¿ytkownikowi testuser2
+[2022-01-13 02:33:08]: testuser odrzuci³ proœbê u¿ytkownika testuser2
+[2022-01-13 02:33:08]: testuser usun¹³ post o treœci (testcontent) i id = 1
+[2022-01-13 02:33:08]: testuser nie lubi posta o id = 1
+[2022-01-13 02:33:08]: testuser nie lubi posta o id = 1
+[2022-01-13 02:33:08]: testuser lubi post o id = 1
+[2022-01-13 02:33:08]: testuser lubi post o id = 1
+[2022-01-13 02:33:08]: testuser skomentowa³ post o id = 1 (testcontent)
+[2022-01-13 02:33:08]: testuser skomentowa³ post o id = 1 (testcontent)
+[2022-01-13 02:33:08]: testuser usun¹³ ze znajomych u¿ytkownika testuser2
+[2022-01-13 02:33:09]: testuser doda³ post o tresci: (testcontent) i id = 1
+[2022-01-13 02:33:09]: testuserzalogowa³ siê do serwisu

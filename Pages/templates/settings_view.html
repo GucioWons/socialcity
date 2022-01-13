@@ -5,32 +5,52 @@
 {%endblock%}
 
 {%block content%}
-<div>
+<style>
+
+      .content
+      {
+        text-align:left;
+      }
+
+    </style>
+
+    <div class="wiersz">
     <form method="POST">{% csrf_token %}
-            {{form.as_p}}
-            <button type="submit", name="update_name">Submit</button>
+        {{form.as_p}}
+        <button type="submit" class="seti" name="update_name">Submit</button>
     </form>
+    </div>
+
+    <div class="wiersz">
     <form method="POST">{% csrf_token %}
-            {{form2.as_p}}
-            <button type="submit", name="update_lastname">Submit</button>
+        {{form2.as_p}}
+        <button type="submit" class="seti" name="update_lastname">Submit</button>
     </form>
+    </div>
+
+    <div class="wiersz">
     <form method="POST">{% csrf_token %}
-            {{form3.as_p}}
-            <button type="submit", name="update_email">Submit</button>
+        {{form3.as_p}}
+        <button type="submit" class="seti" name="update_email">Submit</button>
     </form>
-</div>
-<div>
+    </div>
+
+    <div class="wiersz">
     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-            {{form4.as_p}}
-            <button type="submit", name="update_image">Submit</button>
+        {{form4.as_p}}
+        <button type="submit" class="seti" name="update_image">Submit</button>
     </form>
+    </div>
+</br>
+    <div class="wiersz">
+    <form method="POST">{% csrf_token %}   {{form5.as_p}}
+        <button type="submit" class="seti" name="update_school">Submit</button>
+    </form>
+    </div>
+    <div class="wiersz">
     <form method="POST">{% csrf_token %}
-            {{form5.as_p}}
-            <button type="submit", name="update_school">Submit</button>
+        {{form6.as_p}}
+        <button type="submit" class="seti" name="update_town">Submit</button>
     </form>
-    <form method="POST">{% csrf_token %}
-            {{form6.as_p}}
-            <button type="submit", name="update_town">Submit</button>
-    </form>
-</div>
+    </div>
 {%endblock%}
