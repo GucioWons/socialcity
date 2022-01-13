@@ -1,0 +1,8 @@
+
+[2022-01-13 16:02:03]: Baczizarejestrowa³ siê w serwisie
+[2022-01-13 16:03:08]: Baczizalogowa³ siê do serwisu
+[2022-01-13 16:03:15]: Baczi wys³a³ zaproszenie do znajomych u¿ytkownikowi admin
+[2022-01-13 16:05:20]: Baczizalogowa³ siê do serwisu
+[2022-01-13 16:05:26]: Baczi lubi post o id = 1
+[2022-01-13 16:07:35]: Baczi doda³ post o tresci: (Czeœæ) i id = 2
+[2022-01-13 16:07:37]: Baczi nie lubi posta o id = 2

@@ -11,7 +11,7 @@ class Account(models.Model):
     school = models.CharField(max_length=500, null=True)
     town = models.CharField(max_length=80, null=True)
     image = models.ImageField(default='default.png', null=True)
-    friends = models.ManyToManyField(User, related_name='user_friends', null=True)
+    friends = models.ManyToManyField(User, related_name='user_friends', blank=True)
 
     def __str__(self):
         return self.user.username
