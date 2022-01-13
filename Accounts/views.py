@@ -1,6 +1,7 @@
 import datetime
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,9 +14,8 @@ from Accounts.forms import CommentForm
 from socialcity.settings import LOGS_ROOT
 
 
+@login_required(login_url='/landing')
 def profile_page(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     account = get_object_or_404(Account, id=my_id)
     user = account.user
     queryset = Post.objects.filter(user=user)
@@ -28,9 +28,8 @@ def profile_page(request, my_id):
 
 
 # Dodawanie do znajomych
+@login_required(login_url='/landing')
 def add_to_friends(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     user = get_object_or_404(User, id=my_id)
     if not user.account.friends.all().contains(user):
         notification = Notification.objects.create(user=user)
@@ -42,9 +41,8 @@ def add_to_friends(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required(login_url='/landing')
 def remove_from_friends(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     user = get_object_or_404(User, id=my_id)
     friends_list = request.user.account.friends
     if friends_list.all().contains(user):
@@ -57,9 +55,8 @@ def remove_from_friends(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required(login_url='/landing')
 def accept_request(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     notification = get_object_or_404(Notification, id=my_id)
     if notification.request:
         request.user.account.friends.add(notification.request.user)
@@ -72,9 +69,8 @@ def accept_request(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required(login_url='/landing')
 def decline_request(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     notification = get_object_or_404(Notification, id=my_id)
     if notification.request:
         f = open(os.path.join(LOGS_ROOT, request.user.username + "-logs.txt"), "a")
@@ -85,10 +81,8 @@ def decline_request(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-#Like i Dislike
+@login_required(login_url='/landing')
 def like_view(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     post = get_object_or_404(Post, id=my_id)
     if not post.likes.all().contains(request.user):
         if post.dislikes.all().contains(request.user):
@@ -114,9 +108,8 @@ def like_view(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required(login_url='/landing')
 def dislike_view(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     post = get_object_or_404(Post, id=my_id)
     if not post.dislikes.all().contains(request.user):
         if post.likes.all().contains(request.user):
@@ -142,9 +135,8 @@ def dislike_view(request, my_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required(login_url='/landing')
 def post_view(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     post = get_object_or_404(Post, id=my_id)
     comments = Comment.objects.filter(post=post)
     form = CommentForm(request.POST or None, request.FILES)
@@ -175,9 +167,9 @@ def post_view(request, my_id):
     }
     return render(request, "post_view.html", context)
 
+
+@login_required(login_url='/landing/')
 def delete_post_view(request, my_id):
-    if not request.user.is_authenticated:
-        return redirect('/landing')
     post = get_object_or_404(Post, id=my_id)
     if request.user == post.user:
         f = open(os.path.join(LOGS_ROOT, request.user.username + "-logs.txt"), "a")

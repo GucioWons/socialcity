@@ -16,7 +16,7 @@
         </div>
         <div class="post_list">
             {%for instance in queryset%}
-            {%if request.user in instance.user.account.friends or instance.user == request.user%}
+            {%if instance.user in friends or instance.user == request.user%}
             <div class="home_post">
                 <div class="home_post_details">
                     <img src="{{instance.user.account.image.url}}"/>

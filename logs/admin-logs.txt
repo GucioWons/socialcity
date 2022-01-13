@@ -1,2 +1,5 @@
 
-[2022-01-12 14:26:01]: admin usun¹³ post o treœci (Elo kurwa) i id = 4
+[2022-01-12 14:26:01]: admin usunï¿½ï¿½ post o treï¿½ci (Elo kurwa) i id = 4
+[2022-01-12 23:32:42]: adminzalogowaï¿½ siï¿½ do serwisu
+[2022-01-12 23:51:22]: adminzalogowaï¿½ siï¿½ do serwisu
+[2022-01-13 02:31:03]: adminzalogowa³ siê do serwisu
