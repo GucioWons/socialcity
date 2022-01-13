@@ -305,4 +305,88 @@ nav ul li.btn span.show:before{
 }
 .content{
   z-index: -2;
+  text-align:center;
 }
+
+
+#reje
+{
+    color:blue;
+    font-size:18px;
+}
+
+.p
+{
+    Margin-bottom: 20px;
+    padding:10px;
+}
+.fas
+/*emotki*/
+{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+a
+{
+    text-decoration: none;
+    font-weight:bold;
+
+}
+.seti
+/* przyciski w ustawieniach */
+{
+    float:left;
+    background-color: #7b38d8;
+    border-radius: 5px;
+    border: 4px double #cccccc;
+    line-height:5px;
+    color: #eeeeee;
+    font-size: 16px;
+    height:30px;
+    width: 80px;
+}
+
+.items
+/*ustawienie wycentrowania navbara*/
+{
+    line-height:40px;
+    align:left;
+}
+
+.wiersz
+{
+    width:500px;
+    height:40px;
+    margin-bottom: 30px;
+}
+.leftpane
+/*menu kontekstowe*/
+{
+    height:540px;
+    font-size:20px;
+    font-weight: bold;
+    color:black;
+}
+#motto
+{
+
+    font-family: 'Marck Script', cursive;
+    color:#330099;
+    font-size:20px;
+    font-weight:bold;
+    margin-right:30px;
+    float:right;
+}
+.noti
+{
+font-size:20px;
+margin-bottom:20px;
+margin-top:10px;
+
+}
+
+
+
+
+

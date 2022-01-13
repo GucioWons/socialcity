@@ -1,2 +1,36 @@
 
 [2022-01-12 14:26:01]: admin usun¹³ post o treœci (Elo kurwa) i id = 4
+[2022-01-12 19:20:26]: adminzalogowa³ siê do serwisu
+[2022-01-12 19:27:40]: admin usun¹³ post o treœci (kurwa mac) i id = 6
+[2022-01-12 19:27:42]: admin usun¹³ post o treœci (Jebac sad) i id = 3
+[2022-01-12 19:28:21]: adminzalogowa³ siê do serwisu
+[2022-01-12 19:29:20]: admin doda³ post o tresci: (elo) i id = 18
+[2022-01-12 19:29:27]: admin nie lubi posta o id = 18
+[2022-01-12 19:29:37]: admin skomentowa³ post o id = 18 (no siema)
+[2022-01-12 19:33:05]: adminzalogowa³ siê do serwisu
+[2022-01-12 19:34:43]: adminzalogowa³ siê do serwisu
+[2022-01-12 19:39:48]: admin skomentowa³ post o id = 18 (qwert)
+[2022-01-12 19:39:53]: admin skomentowa³ post o id = 18 (dupa)
+[2022-01-12 19:39:59]: admin skomentowa³ post o id = 18 (dupa)
+[2022-01-12 19:42:15]: admin wys³a³ zaproszenie do znajomych u¿ytkownikowi chujowa
+[2022-01-12 19:54:19]: adminzalogowa³ siê do serwisu
+[2022-01-12 20:12:43]: adminzalogowa³ siê do serwisu
+[2022-01-12 20:32:20]: adminzalogowa³ siê do serwisu
+[2022-01-12 20:34:47]: adminzalogowa³ siê do serwisu
+[2022-01-12 20:50:43]: adminzalogowa³ siê do serwisu
+[2022-01-12 20:59:56]: adminzalogowa³ siê do serwisu
+[2022-01-12 21:05:29]: adminzalogowa³ siê do serwisu
+[2022-01-12 21:05:37]: admin zaakceptowa³ proœbê u¿ytkownika mojekonto
+[2022-01-12 21:06:44]: adminzalogowa³ siê do serwisu
+[2022-01-12 21:06:59]: admin lubi post o id = 19
+[2022-01-12 22:00:22]: admin lubi post o id = 1
+[2022-01-12 22:24:24]: adminzalogowa³ siê do serwisu
+[2022-01-12 22:34:01]: adminzalogowa³ siê do serwisu
+[2022-01-12 22:44:36]: adminzalogowa³ siê do serwisu
+[2022-01-12 23:11:40]: adminzalogowa³ siê do serwisu
+[2022-01-12 23:11:50]: admin zaakceptowa³ proœbê u¿ytkownika mojekonto
+[2022-01-12 23:11:52]: admin zaakceptowa³ proœbê u¿ytkownika mojekonto
+[2022-01-12 23:11:58]: admin zaakceptowa³ proœbê u¿ytkownika mojekonto
+[2022-01-12 23:12:52]: adminzalogowa³ siê do serwisu
+[2022-01-12 23:38:57]: adminzalogowa³ siê do serwisu
+[2022-01-13 02:07:48]: adminzalogowa³ siê do serwisu

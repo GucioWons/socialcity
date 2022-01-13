@@ -5,13 +5,27 @@
 {%endblock%}
 
 {%block content%}
-<div class="leftpane">a</div>
+<div class="leftpane">
+
+    <u>Menu kontekstowe</u></br></br>
+    Znajomi  <i class="fas fa-address-book"style="color:black"></i></br>
+    Grupy  <i class="fas fa-users" style="color:black"></i></br>
+    Marketplace  <i class="fas fa-shopping-basket" style="color:black"></i></br>
+    Watch  <i class="fas fa-play-circle"style="color:black"></i></br>
+    Wspomnienia  <i class="fas fa-clock"style="color:black"></i></br>
+    Covid-19  <i class="fas fa-head-side-mask"style="color:black"></i> </br>
+    Games  <i class="fas fa-gamepad"style="color:black"></i></br>
+    Ulubione  <i class="fas fa-star"style="color:black"></i></br>
+
+
+
+</div>
 <div class="middlepane">
     <div class="middlepane_inside">
         <div class="new_post">
             <form action="." method="POST" enctype="multipart/form-data">{%csrf_token%}
                 {{form.as_p}}
-                <input type="submit" name="add_post" value="+"/>
+             <button type="submit" ><i class="fas fa-plus" style="color:black"></i></button>
             </form>
         </div>
         <div class="post_list">
@@ -20,13 +34,14 @@
             <div class="home_post">
                 <div class="home_post_details">
                     <img src="{{instance.user.account.image.url}}"/>
-                    <a href="{{instance.user.account.get_absolute_url}}">{{instance.user.first_name}} {{instance.user.last_name}}</a></br>
+                    <a href="{{instance.user.account.get_absolute_url}}">
+                        {{instance.user.first_name}} {{instance.user.last_name}}</a></br>
                     {{instance.date}}
 
                 </div>
                 {%if instance.user == request.user%}
                     <div class="delete">
-                        <a href="{{instance.get_delete_url}}"><i class="far fa-times-circle"></i></a>
+                        <a href="{{instance.get_delete_url}}"><i class="far fa-times-circle"style="color:red"></i></a>
                     </div>
                 {%endif%}
                 <div class="home_post_content">
@@ -38,12 +53,15 @@
                     </div>
                 {%endif%}
                 <div class="action">
-                    {{instance.likes.count}} <a href="{{instance.get_like_url}}"><i class="fas fa-hand-spock"></i></a>
+                    {{instance.likes.count}} <a href="{{instance.get_like_url}}">
+                    <i class="fas fa-hand-spock"style="color:yellow"></i></a>
                 </div>
                 <div class="action">
-                    {{instance.dislikes.count}} <a href="{{instance.get_dislike_url}}"><i class="fas fa-heart-broken"></i></a>
+                    {{instance.dislikes.count}} <a href="{{instance.get_dislike_url}}">
+                    <i class="fas fa-heart-broken"style="color:red"></i></a>
                 </div>
-                <div class="action"><a href="{{instance.get_absolute_url}}"><i class="fas fa-comments"></i></a></div>
+                <div class="action"><a href="{{instance.get_absolute_url}}">
+                    <i class="fas fa-comments"style="color:blue"></i></a></div>
             </div>
             {%endif%}
             {%endfor%}

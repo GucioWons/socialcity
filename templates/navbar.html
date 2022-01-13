@@ -1,13 +1,12 @@
 <nav>
     <ul>
-        <li class="logo">SocialCity</li>
+        <li class="logo"><a href="/" style="text-decoration: none">SocialCity</a></li>
         <li class="btn"><span class="fas fa-bars"></span></li>
         <div class="items">
-            <li><a href="/">Strona główna</a></li>
-            <li><a href="{{request.user.account.get_absolute_url}}">Profil</a></li>
-            <li><a href="/settings">Ustawienia</a></li>
-            <li><a href="/notifications"><i class="fas fa-concierge-bell"></i></a></li>
-            <li><a href="/logout">Wyloguj</a></li>
+            <li><a href="{{request.user.account.get_absolute_url}}">Profil <i class="fas fa-male" style="color:orange"></i> </a></li>
+            <li><a href="/settings">Ustawienia <i class="fas fa-cogs" style="color:orange"></i> </a></li>
+            <li><a href="/notifications" >Powiadomienia <i class="fas fa-concierge-bell"style="color:orange"></i></a></li>
+            <li><a href="/logout">Wyloguj <i class="fas fa-sign-out-alt"style="color:orange"></i> </a></li>
         </div>
         <li class="search-icon">
             <form method="GET", action="{% url 'pages:search-page'%}">
